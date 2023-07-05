@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="contenedor">
+      <div class="calculo">
+        <form id="form-mensura" action="">
+          <div class="form-group">
+            <label for="origen">Cantidad Parcela/s Origen *</label>
+            <input type="number" min="0" value="0" id="origen" />
+          </div>
+
+          <div class="form-group">
+            <label for="resultante">Cantidad Parcela/s Resultante/s *</label>
+            <input type="number" min="0" value="0" id="resultante" />
+          </div>
+
+          <div class="form-group">
+            <label for="ufuncional"
+              >Cantidad Unidad/es Funcional/es y/o Unidades Complementarias</label
+            >
+            <input type="number" min="0" value="0" id="ufuncional" />
+          </div>
+
+          <div class="form-group">
+            <label for="ddjj">Declaracion Jurada (formato papel)</label>
+            <input type="number" min="0" value="0" id="ddjj" />
+          </div>
+
+          <div class="form-group">
+            <label for="cementerio">Cementerio</label>
+            <input type="number" min="0" value="0" id="cementerio" />
+          </div>
+
+          <div class="form-group">
+            <label for="estado">Verificacion de Estado Parcelario</label>
+            <input type="number" min="0" value="0" id="estado" />
+          </div>
+
+          <div class="form-group">
+            <label for="estudio">Solicitud estudio de titulo y antecedentes dominial</label>
+            <input type="number" min="0" value="0" id="estudio" />
+          </div>
+
+          <div class="form-group">
+            <label for="preferencial-mensura">Preferencial</label>
+            <input type="checkbox" id="preferencial-mensura" />
+          </div>
+        </form>
+
+        <table id="table-mensura" style="display: none">
+          <thead>
+            <tr>
+              <th id="titulo"></th>
+              <th>Cantidad</th>
+              <th>Inporte</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th headers="titulo">Parcelas Origen</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Parcelas Resultantes</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Unidad Funcional</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Declaracion Jurada</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Cementerio</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Estado Parcelario</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Estudio titulo y antecedentes</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Preferencial</th>
+            </tr>
+          </tbody>
+          <tfoot>
+            <th colspan="2">Total Abonar:</th>
+            <th colspan="2" id="abonar-mensura">$0,00</th>
+          </tfoot>
+        </table>
+
+        <div class="buttons">
+          <button class="btn" id="calcular-mensura">CALCULAR</button>
+          <button class="btn" id="limpiar-mensura">LIMPIAR</button>
+          <button class="btn" id="recalcular-mensura" style="display: none">RECALCULAR</button>
+        </div>
+      </div>
+
+      <div class="calculo">
+        <form id="form-valuaciones" action="">
+          <div class="form-group">
+            <label for="ddjj-valuaciones">Declaracion Jurada (formato papel)</label>
+            <input type="number" min="0" value="0" id="ddjj-valuaciones" />
+          </div>
+
+          <div class="form-group">
+            <label for="certificacion">Certficación de valores fiscales de inmuebles</label>
+            <input type="number" min="0" value="0" id="certificacion" />
+          </div>
+
+          <div class="form-group">
+            <label for="pedido">Pedido de reconsideración de valuación fiscal</label>
+            <input type="number" min="0" value="0" id="pedido" />
+          </div>
+
+          <div class="form-group">
+            <label for="reconsideracion">Pedido de reconsideración de receptividad ganadera</label>
+            <input type="number" min="0" value="0" id="reconsideracion" />
+          </div>
+
+          <div class="form-group">
+            <label for="vir">Pedido de reconsideración de VIR</label>
+            <input type="number" min="0" value="0" id="vir" />
+          </div>
+
+          <div class="form-group">
+            <label for="preferencia-valuaciones">Preferencial</label>
+            <input type="checkbox" id="preferencia-valuaciones" />
+          </div>
+        </form>
+
+        <table id="table-valuaciones" style="display: none">
+          <thead>
+            <tr>
+              <th id="titulo"></th>
+              <th>Cantidad</th>
+              <th>Inporte</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th headers="titulo">Declaración Jurada</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Certficación de valores fiscales de inmuebles</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Reconsideración de Valuación Fiscal</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Reconsideración de receptividad ganadera</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Reconsideración de VIR</th>
+            </tr>
+            <tr>
+              <th headers="titulo">Preferencial</th>
+            </tr>
+          </tbody>
+          <tfoot>
+            <th colspan="2">Total Abonar:</th>
+            <th id="abonar-valuaciones" colspan="2">$0,00</th>
+          </tfoot>
+        </table>
+
+        <div class="buttons">
+          <button class="btn" id="calcular-valuaciones">CALCULAR</button>
+          <button class="btn" id="limpiar-valuaciones">LIMPIAR</button>
+          <button class="btn" id="recalcular-valuaciones" style="display: none">RECALCULAR</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="mensura.js"></script>
+    <script type="module" src="valuaciones.js"></script>
+  </body>
+</html>
