@@ -1,0 +1,74 @@
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  width: 360px;
+  font-weight: bold;
+}
+
+.form-group input {
+  max-width: 120px;
+  padding-left: 7px;
+  margin-left: 20px;
+}
+
+/* Tablas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+caption {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+td,
+th {
+  text-align: center;
+  padding: 3px;
+}
+
+th[headers="titulo"] {
+  text-align: left;
+}
+
+tfoot {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+tfoot th {
+  text-align: center;
+}
+
+.abonar {
+  font-weight: bold;
+  color: #e74d3c;
+}
+
+/* Botones */
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  max-width: 120px;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}
