@@ -1,3 +1,17 @@
+.calculo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mensura {
+  height: 400px;
+}
+
+.valuaciones {
+  height: 316px;
+}
+
 .form-group {
   display: flex;
   align-items: center;
