@@ -1,3 +1,8 @@
+.calculo {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-group {
   display: flex;
   align-items: center;
