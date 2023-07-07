@@ -38,6 +38,21 @@
           </div>
 
           <div class="form-group">
+            <label for="anulacion">Anulacion de registro de plano</label>
+            <input type="number" min="0" value="0" id="anulacion" />
+          </div>
+
+          <div class="form-group">
+            <label for="rectificacion">Rectificacion de cada plano</label>
+            <input type="number" min="0" value="0" id="rectificacion" />
+          </div>
+
+          <div class="form-group">
+            <label for="presentacion">Cuarta presentacion o superior?</label>
+            <input type="checkbox" id="presentacion" />
+          </div>
+
+          <div class="form-group">
             <label for="estado">Verificacion de Estado Parcelario</label>
             <input type="number" min="0" value="0" id="estado" />
           </div>
@@ -101,7 +116,7 @@
         </div>
       </div>
 
-      <div class="calculo">
+      <div class="calculo" style="display: none">
         <form id="form-valuaciones" action="">
           <div class="form-group">
             <label for="ddjj-valuaciones">Declaracion Jurada (formato papel)</label>
