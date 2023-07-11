@@ -13,9 +13,9 @@ export const modulos = [
 
 // Montos con índice aplicado
 export const montosMensura = [
-  { monto: 500 }, // 1.2.a) Unidad Funcional y/o Unidad Complementaria -> M500
+  { monto: 500 }, // 1.3) Unidad Funcional y/o Unidad Complementaria -> M500
   { monto: 200 }, // Declaración jurada individual formato papel -> M200
-  { monto: 100 }, // 1.4)
+  { monto: 100, parcelas: true }, // 1.4)
   { monto: 2000 }, // 1.5) Anulacion de registro plano -> M200
   { monto: 2000 }, // 1.6) Rectificacion de cada plano de mensura registrado -> M2000
   { monto: 1500, parcelas: true, extra: 2 }, // 1.8.1) Por estudios de parcela/undad funcional.
@@ -26,7 +26,7 @@ export const montosMensura = [
 
 export const montosValuaciones = [
   { monto: 200 }, // Declaración jurada individual formato papel -> M200
-  { monto: 600, parcelas: true }, // 3.3) Por certificación de valores fiscales de inmueble, por cada parcela -> M600
+  { monto: 600 }, // 3.3) Por certificación de valores fiscales de inmueble, por cada parcela -> M600
   { monto: 500 }, // 3.4) Por pedido de reconsideración de valuación fiscal -> M500
   { monto: 500 }, // 3.5) Por pedido de reconsideración de receptividad ganadera -> M500
   { monto: 700 }, // 3.6) Por pedido de reconsideración de VIR -> M700
