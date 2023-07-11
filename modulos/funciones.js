@@ -1,4 +1,4 @@
-import { modulos, porcentajePreferencial } from "./constantes.js"; // Constantes de uso general
+import { indice, modulos } from "./constantes.js"; // Constantes de uso general
 
 /**
  * Formatea un monto de tipo numérico en una cadena con el formato de moneda argentina
@@ -40,23 +40,19 @@ function obtenerValoresFormulario(formularioId) {
 function actualizarCeldas(parametros) {
   const { tablaId, filaIndex, cantidad, importe, total } = parametros;
   const tabla = document.getElementById(tablaId);
-  const fila = tabla.getElementsByTagName("tr")[filaIndex + 1];
+  const fila = tabla.rows[filaIndex + 1];
 
   // Si no hay suficientes celdas, agregar nuevas celdas
-  if (fila.cells.length < 4) {
-    for (let i = fila.cells.length; i < 4; i++) {
-      fila.insertCell();
-    }
+  const celdasFaltantes = 4 - fila.cells.length;
+  for (let i = 0; i < celdasFaltantes; i++) {
+    fila.insertCell();
   }
 
   // Actualizar el contenido de las celdas
-  if (typeof cantidad === "boolean") {
-    fila.cells[1].textContent = cantidad ? "SI" : "NO";
-    fila.cells[2].textContent = cantidad ? `${importe}%` : "0%";
-  } else {
-    fila.cells[1].textContent = cantidad;
-    fila.cells[2].textContent = formatoMoneda(importe);
-  }
+  const cantidadTexto = typeof cantidad === "boolean" ? (cantidad ? "SI" : "NO") : cantidad;
+  fila.cells[1].textContent = cantidadTexto;
+  fila.cells[2].textContent =
+    typeof cantidad === "boolean" ? `${importe}%` : formatoMoneda(importe);
   fila.cells[3].textContent = formatoMoneda(total);
 }
 
@@ -68,46 +64,45 @@ function actualizarCeldas(parametros) {
  */
 export function cargarTabla(tipo, montos, parcelas) {
   const entrada = obtenerValoresFormulario(`form-${tipo}`);
-  const tablaId = `table-${tipo}`;
-  const long = entrada.length - 1;
-  const totalAbonar = document.getElementById(`abonar-${tipo}`);
   let abonar = 0;
+  const totales = [];
 
   entrada.forEach((valor, indice) => {
-    if (indice < long) {
-      let total = valor * montos[indice].monto;
-      total *= montos[indice].parcelas && parcelas ? parcelas : 1;
+    let total = 0;
+    const monto = montos[indice].monto;
+    const porcentaje = montos[indice].porcentaje;
 
-      if (montos[indice].extra) {
-        const i = montos[indice].extra;
-        if (entrada[i] !== 0) {
-          total *= entrada[i];
-        }
+    if (monto) {
+      total = monto * valor;
+
+      if (parcelas && montos[indice].parcelas) {
+        total *= parcelas;
       }
 
-      actualizarCeldas({
-        tablaId,
-        filaIndex: indice,
-        cantidad: valor,
-        importe: montos[indice].monto,
-        total,
-      });
-      abonar += total;
+      const extraIndex = montos[indice].extra;
+      if (extraIndex !== undefined && entrada[extraIndex] !== 0) {
+        total *= entrada[extraIndex];
+      }
     }
+
+    if (porcentaje) {
+      total = valor ? abonar * (porcentaje / 100) : 0;
+    }
+
+    abonar += total;
+    totales.push(total);
+
+    actualizarCeldas({
+      tablaId: `table-${tipo}`,
+      filaIndex: indice,
+      cantidad: valor,
+      importe: monto || porcentaje,
+      total,
+    });
   });
 
-  // Se agrega la fila especial de Preferencial
-  const totalPref = entrada[long] ? abonar * (porcentajePreferencial / 100) : 0;
-  actualizarCeldas({
-    tablaId,
-    filaIndex: long,
-    cantidad: entrada[long],
-    importe: porcentajePreferencial,
-    total: totalPref,
-  });
-
-  // Tfoot => Total a Abonar
-  totalAbonar.textContent = formatoMoneda(abonar + totalPref);
+  const totalAbonar = document.getElementById(`abonar-${tipo}`);
+  totalAbonar.textContent = formatoMoneda(abonar);
 }
 
 /**
