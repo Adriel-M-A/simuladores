@@ -65,7 +65,6 @@ function actualizarCeldas(parametros) {
 export function cargarTabla(tipo, montos, parcelas) {
   const entrada = obtenerValoresFormulario(`form-${tipo}`);
   let abonar = 0;
-  const totales = [];
 
   entrada.forEach((valor, indice) => {
     let total = 0;
@@ -90,7 +89,6 @@ export function cargarTabla(tipo, montos, parcelas) {
     }
 
     abonar += total;
-    totales.push(total);
 
     actualizarCeldas({
       tablaId: `table-${tipo}`,
