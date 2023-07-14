@@ -10,7 +10,7 @@ calcularButton.addEventListener("click", () => {
 
   const montoParcelas = parcelasValorModular(parcelas);
 
-  var montos = montosMensura;
+  var montos = montosMensura.map((objeto) => ({ ...objeto }));
   const monto = { monto: montoParcelas };
   montos.unshift(monto, monto);
 
