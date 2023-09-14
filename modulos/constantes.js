@@ -1,26 +1,26 @@
-export const indice = 2.5; // Índice utilizado para calcular montos basados en valores preestablecidos
+export const indice = 5; // Índice utilizado para calcular montos basados en valores preestablecidos
 export const preferencial = 500; // Porcentaje Preferencial
 
 /*----- Módulos -----*/
 
 // 1.1) Por estudio de mensura, considerado como número de parcelas la suma de parcelas de origen más resultante
 export const modulos = [
-  { rango: [0, 5], valor: 750 },
-  { rango: [6, 20], valor: 625 },
-  { rango: [21, 50], valor: 550 },
-  { rango: [51, Infinity], valor: 500 },
+  { rango: [0, 5], valor: 900 },
+  { rango: [6, 20], valor: 740 },
+  { rango: [21, 50], valor: 660 },
+  { rango: [51, Infinity], valor: 600 },
 ].map((modulo) => ({ ...modulo, valor: modulo.valor * indice }));
 
 // Montos con índice aplicado
 export const montosMensura = [
-  { monto: 500 }, // 1.3) Unidad Funcional y/o Unidad Complementaria -> M500
-  { monto: 200 }, // Declaración jurada individual formato papel -> M200
-  { monto: 100, parcelas: true }, // 1.4)
-  { monto: 2000 }, // 1.5) Anulacion de registro plano -> M200
-  { monto: 2000 }, // 1.6) Rectificacion de cada plano de mensura registrado -> M2000
-  { monto: 1500, parcelas: true, extra: 2 }, // 1.8.1) Por estudios de parcela/undad funcional.
-  { monto: 700, parcelas: true }, // 1.9) Solicitud estudio de título y antecedente dominial (por parcelas) -> M700
-  { porcentaje: 30 }, // 1.7) Presentaciones previas sucesivas y/o definitivas, se aplicara a partir de la cuarta presentacion
+  { monto: 600 }, // 1.2) Unidad Funcional y/o Unidad Complementaria.
+  { monto: 240 }, // Declaración jurada individual formato papel.
+  { monto: 120, parcelas: true }, // 1.3) Cementerio.
+  { monto: 2400 }, // 1.4) Rectificacion de cada plano de mensura registrado.
+  { monto: 2250 }, // 1.6.1) Por estudios de parcelas.
+  { monto: 1500 }, // 1.6.2) Por estudio de la Unidad Funcional/Complementaria.
+  { monto: 1500, parcelas: true }, // 1.7) Solicitud estudio de título y antecedente dominial (por parcelas).
+  { porcentaje: 40 }, // 1.7) Presentaciones previas sucesivas y/o definitivas, se aplicara a partir de la cuarta presentacion
   { porcentaje: preferencial }, // Porcentaje preferencial
 ].map((monto) => (monto.monto ? { ...monto, monto: monto.monto * indice } : monto));
 
