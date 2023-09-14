@@ -25,10 +25,10 @@ export const montosMensura = [
 ].map((monto) => (monto.monto ? { ...monto, monto: monto.monto * indice } : monto));
 
 export const montosValuaciones = [
-  { monto: 200 }, // Declaración jurada individual formato papel -> M200
-  { monto: 600 }, // 3.3) Por certificación de valores fiscales de inmueble, por cada parcela -> M600
-  { monto: 500 }, // 3.4) Por pedido de reconsideración de valuación fiscal -> M500
-  { monto: 500 }, // 3.5) Por pedido de reconsideración de receptividad ganadera -> M500
-  { monto: 700 }, // 3.6) Por pedido de reconsideración de VIR -> M700
+  { monto: 240 }, // Declaración jurada individual formato papel
+  { monto: 720 }, // 3.3) Por certificación de valores fiscales de inmueble, por cada parcela
+  { monto: 600 }, // 3.4) Por pedido de reconsideración de valuación fiscal
+  { monto: 600 }, // 3.5) Por pedido de reconsideración de receptividad ganadera
+  { monto: 840 }, // 3.6) Por pedido de reconsideración
   { porcentaje: preferencial }, // Porcentaje preferencial
 ].map((monto) => (monto.monto ? { ...monto, monto: monto.monto * indice } : monto));
